@@ -1,10 +1,11 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { TodoInput } from "./todoinput"
+import { TodoList } from "./todolist"
 
 export const TodoMain=()=>{
 
     const [inputitem, SetInputItem] = useState("")
-    const [todoitem, SetTodoItem] = useState([])
+    const [todoitem, SetTodoItem] = useState(getLocalItem())
     console.log(inputitem)
     console.log(todoitem)
 
@@ -12,10 +13,14 @@ export const TodoMain=()=>{
     const handleSubmit=()=>{
         SetTodoItem([...todoitem,inputitem])
         SetInputItem("")
+      }
 
 
-    }
+      //add localstorage
 
+      useEffect(()=>{
+        localStorage.setItem("todotask", JSON.stringify(todoitem))
+      },[todoitem])
 
  return (
     <div>
@@ -28,8 +33,27 @@ export const TodoMain=()=>{
         handleSubmit={handleSubmit}
         />
 
-        {todoitem.map((e)=> <h1>{e}</h1>)}
+        {todoitem.map((elem,index)=>{
+            return(
+                <TodoList
+                   key={index}
+                    elem={elem}
+                    index={index}
+                />
+            )
+        })}
     </div>
  )
 
+}
+
+
+const getLocalItem=()=>{
+    let todotask = localStorage.getItem("todotask")
+    if(todotask){
+        return JSON.parse(localStorage.getItem("todotask"))
+
+    }else{
+        return []
+    }
 }
