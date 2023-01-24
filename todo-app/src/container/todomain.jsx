@@ -6,6 +6,8 @@ export const TodoMain=()=>{
 
     const [inputitem, SetInputItem] = useState("")
     const [todoitem, SetTodoItem] = useState(getLocalItem())
+    const [toggleitem, SettoggleItem] = useState(true)
+    const [edititem,SetEditItem] = useState(null)
     console.log(inputitem)
     console.log(todoitem)
 
@@ -14,7 +16,21 @@ export const TodoMain=()=>{
         if(!inputitem){
             alert("please add task")
 
-        }else{
+        }
+        else if(inputitem && !toggleitem){
+
+            SetTodoItem(todoitem.map((elem)=>{
+
+             if(elem.id == edititem){
+                return {...elem , name: inputitem} 
+
+             }
+             return elem
+            }))
+
+        }
+        
+        else{
 
         const inputtask = {id : new Date().getTime().toString(), name: inputitem}
          SetTodoItem([...todoitem, inputtask])
@@ -34,6 +50,17 @@ export const TodoMain=()=>{
       }
 
 
+      const handleEdit=(id)=>{
+        let newEdititem = todoitem.find((elem)=>{
+         return elem.id === id
+       })
+        console.log(newEdititem)
+        SettoggleItem(false)
+        SetInputItem(newEdititem.name)
+        SetEditItem(id)
+        
+      }
+
       //add localstorage
 
       useEffect(()=>{
@@ -49,6 +76,8 @@ export const TodoMain=()=>{
         todoitem={todoitem}  
         SetTodoItem={SetTodoItem}
         handleSubmit={handleSubmit}
+        toggleitem={ toggleitem}
+        SettoggleItem={SettoggleItem}
         />
 
         {todoitem.map((elem)=>{
@@ -58,6 +87,7 @@ export const TodoMain=()=>{
                    index={elem.id}
                     elem={elem.name}
                     handleDelete={handleDelete}
+                    handleEdit={handleEdit}
                     
                 />
             )
