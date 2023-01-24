@@ -4,6 +4,7 @@ import { TodoList } from "./todolist"
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import { DeleteIcon } from '@chakra-ui/icons'
 import { Tooltip } from '@chakra-ui/react'
+import "./Todomain.css"
 
 export const TodoMain=()=>{
 
@@ -81,7 +82,7 @@ export const TodoMain=()=>{
       console.log(todoapplength)
 
  return (
-    <div style={{displa:"flex" , border:"2px solid red" ,width:"50%" , margin:"auto"}}>
+    <div className="todomaincontainer">
     <marquee>
      <h2 style={{textAlign:"center" ,color:"Teal" , fontSize:"25px" , fontWeight:"600"}}>Welcome To Todo App</h2>
     </marquee>
