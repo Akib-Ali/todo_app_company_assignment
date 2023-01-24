@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import { TodoInput } from "./todoinput"
 import { TodoList } from "./todolist"
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import { DeleteIcon } from '@chakra-ui/icons'
+import { Tooltip } from '@chakra-ui/react'
 
 export const TodoMain=()=>{
 
@@ -82,7 +85,13 @@ export const TodoMain=()=>{
         <h2>Welcome To Todo App</h2>
         <div style={{display:"flex" , gap:"100px"}}>
         <h2>{`Total Todo Item 👍 : ${todoapplength}`}</h2>
-        <button onClick={handleAllDelete}>Delete All Task</button>
+        {/* <button onClick={handleAllDelete}>Delete All Task</button> */}
+        <Tooltip hasArrow label='Delete All Item' bg='red.600'>
+          <Button colorScheme='red' variant='outline' onClick={handleAllDelete}> 
+         <DeleteIcon/>
+          </Button> 
+
+         </Tooltip>
         </div>
        
         <TodoInput 

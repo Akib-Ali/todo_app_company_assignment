@@ -1,3 +1,4 @@
+import { Button, ButtonGroup } from '@chakra-ui/react'
 export const TodoInput=(props)=>{
 
     return(
@@ -12,7 +13,10 @@ export const TodoInput=(props)=>{
             
             }
             
-            <h2></h2>
+            <Button colorScheme='teal' variant='outline'>
+    Button
+  </Button>
+
         </div>
     )
 
