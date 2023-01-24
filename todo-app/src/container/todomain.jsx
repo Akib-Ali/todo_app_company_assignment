@@ -11,8 +11,26 @@ export const TodoMain=()=>{
 
 
     const handleSubmit=()=>{
-        SetTodoItem([...todoitem,inputitem])
+        if(!inputitem){
+            alert("please add task")
+
+        }else{
+
+        const inputtask = {id : new Date().getTime().toString(), name: inputitem}
+         SetTodoItem([...todoitem, inputtask])
+        }
         SetInputItem("")
+      }
+
+
+      const handleDelete=(index)=>{
+      
+     const updatedTodo = todoitem.filter((elem)=>{
+
+        return index !== elem.id
+     })
+     SetTodoItem(updatedTodo)
+
       }
 
 
@@ -33,12 +51,14 @@ export const TodoMain=()=>{
         handleSubmit={handleSubmit}
         />
 
-        {todoitem.map((elem,index)=>{
+        {todoitem.map((elem)=>{
             return(
                 <TodoList
-                   key={index}
-                    elem={elem}
-                    index={index}
+                   key={elem.id}
+                   index={elem.id}
+                    elem={elem.name}
+                    handleDelete={handleDelete}
+                    
                 />
             )
         })}
