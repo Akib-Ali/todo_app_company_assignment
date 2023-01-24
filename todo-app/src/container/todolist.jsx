@@ -6,8 +6,12 @@ import { BiEdit } from 'react-icons/bi'
 export const TodoList=(props)=>{
 
 return(
-    <div style={{display:"flex" , gap:"70px"}}>
-         <h2>{props.elem}</h2>
+    <div style={{display:"flex" , gap:"70px", border:"2px solid orange" ,width:"60%", margin :"auto",marginTop:"10px", 
+    justifyContent:"space-between"}}>
+      
+        <div style={{minWidth:"200px"}}>
+         <h2 style={{color:"#1F8A70" , fontWeight:"600"}}>{props.elem}</h2>
+         </div>
 
         
          

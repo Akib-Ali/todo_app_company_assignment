@@ -8,7 +8,7 @@ export const TodoInput=(props)=>{
 
     return(
 
-        <div style={{display:"flex", gap:"30px"}}>
+        <div style={{display:"flex", border:"2px solid teal", justifyContent:"space-between", width:"50%" , margin:"auto", marginTop:"50px", marginBottom:"40px"}}>
             <input placeholder=" ✍️ Add new Todo..." value={props.inputitem} 
             onChange={((e)=> props.SetInputItem(e.target.value))}/>
             {props. toggleitem ? 

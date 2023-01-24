@@ -81,10 +81,13 @@ export const TodoMain=()=>{
       console.log(todoapplength)
 
  return (
-    <div>
-        <h2>Welcome To Todo App</h2>
-        <div style={{display:"flex" , gap:"100px"}}>
-        <h2>{`Total Todo Item 👍 : ${todoapplength}`}</h2>
+    <div style={{displa:"flex" , border:"2px solid red" ,width:"50%" , margin:"auto"}}>
+    <marquee>
+     <h2 style={{textAlign:"center" ,color:"Teal" , fontSize:"25px" , fontWeight:"600"}}>Welcome To Todo App</h2>
+    </marquee>
+
+        <div style={{display:"flex", justifyContent:"space-between",  border:"1px solid orange", margin:"auto", width:"50%" , borderRadius:"5px"}}>
+        <h2 style={{fontSize:"25px", color:"Teal", fontWeight:"600px"}}>{`Total Todo Item 👍 : ${todoapplength}`}</h2>
         
         <Tooltip hasArrow label='Delete All Item' bg='red.600'>
           <Button colorScheme='red' variant='outline' onClick={handleAllDelete}> 
