@@ -14,7 +14,7 @@ export const TodoMain=()=>{
 
     const handleSubmit=()=>{
         if(!inputitem){
-            alert("please add task")
+            alert("please write task ✍️")
 
         }
         else if(inputitem && !toggleitem){
@@ -27,6 +27,8 @@ export const TodoMain=()=>{
              }
              return elem
             }))
+
+            SettoggleItem(true)
 
         }
         
@@ -41,10 +43,10 @@ export const TodoMain=()=>{
 
       const handleDelete=(index)=>{
       
-     const updatedTodo = todoitem.filter((elem)=>{
+      const updatedTodo = todoitem.filter((elem)=>{
 
         return index !== elem.id
-     })
+      })
      SetTodoItem(updatedTodo)
 
       }
@@ -61,15 +63,28 @@ export const TodoMain=()=>{
         
       }
 
+
+      const handleAllDelete=()=>{
+        SetTodoItem([])
+      }
+
       //add localstorage
 
       useEffect(()=>{
         localStorage.setItem("todotask", JSON.stringify(todoitem))
       },[todoitem])
 
+      const todoapplength =  todoitem.length;
+      console.log(todoapplength)
+
  return (
     <div>
         <h2>Welcome To Todo App</h2>
+        <div style={{display:"flex" , gap:"100px"}}>
+        <h2>{`Total Todo Item 👍 : ${todoapplength}`}</h2>
+        <button onClick={handleAllDelete}>Delete All Task</button>
+        </div>
+       
         <TodoInput 
         inputitem={inputitem}
         SetInputItem={SetInputItem} 
