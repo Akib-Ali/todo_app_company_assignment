@@ -1,4 +1,9 @@
-import { Button, ButtonGroup } from '@chakra-ui/react'
+
+import { Button, ButtonGroup ,IconButton,Icon} from '@chakra-ui/react'
+import {AddIcon} from "@chakra-ui/icons"
+// import   FaEdit from "react-icons/fc"
+import { BiEdit } from 'react-icons/bi'
+
 export const TodoInput=(props)=>{
 
     return(
@@ -7,15 +12,24 @@ export const TodoInput=(props)=>{
             <input placeholder=" ✍️ Add new Todo..." value={props.inputitem} 
             onChange={((e)=> props.SetInputItem(e.target.value))}/>
             {props. toggleitem ? 
-                <button title="add new task" onClick={props.handleSubmit}>Add  ✌️ New Task</button>
+               
+                <ButtonGroup size='sm' isAttached variant='outline'>
+               <Button  onClick={props.handleSubmit}>Save New Item</Button>
+               <IconButton aria-label='Add to friends' icon={<AddIcon />} />
+               </ButtonGroup>
                 :
-                <button title="add new task" onClick={props.handleSubmit}>Edit  ✍️ Task</button>
+              
+                <ButtonGroup size='sm' isAttached variant='outline'>
+               <Button  onClick={props.handleSubmit}>Edit Item</Button>
+                <IconButton aria-label='Add to friends' icon={<BiEdit/>} /> 
+                </ButtonGroup>
+
             
             }
             
-            <Button colorScheme='teal' variant='outline'>
-    Button
-  </Button>
+            
+    
+  
 
         </div>
     )

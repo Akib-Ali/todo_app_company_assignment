@@ -85,7 +85,7 @@ export const TodoMain=()=>{
         <h2>Welcome To Todo App</h2>
         <div style={{display:"flex" , gap:"100px"}}>
         <h2>{`Total Todo Item 👍 : ${todoapplength}`}</h2>
-        {/* <button onClick={handleAllDelete}>Delete All Task</button> */}
+        
         <Tooltip hasArrow label='Delete All Item' bg='red.600'>
           <Button colorScheme='red' variant='outline' onClick={handleAllDelete}> 
          <DeleteIcon/>
